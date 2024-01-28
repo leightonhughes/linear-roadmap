@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -13,6 +14,7 @@ import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { ModeToggle } from "@/components/mode-toggle";
 
 export default function RootLayout({
   children,
@@ -22,24 +24,34 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="flex h-screen flex-col  bg-white">
+        <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+        <div className="flex h-screen flex-col">
           <div className="relative z-20 flex flex-col  justify-between  gap-4 py-6 shadow">
-            <div className="container flex flex-col gap-2">
-              <h1 className="text-lg font-semibold text-slate-700">
+            <div className="container flex justify-between">
+              <div className="flex flex-col gap-2">
+              <h1 className="text-lg font-semibold text-slate-700 dark:text-slate-400">
                 <Link href="/">Roadmap</Link>
               </h1>
 
               <div className="flex gap-2">
                 <Button variant="secondary" size="sm" asChild>
-                  <Link href="/">Timeline</Link>
-                </Button>
-                <Button variant="secondary" size="sm" asChild>
-                  <Link href="/status">Status</Link>
+                  <Link href="/">Status</Link>
                 </Button>
                 <Button variant="secondary" size="sm" asChild>
                   <Link href="/lead">Assigned</Link>
                 </Button>
+                <Button variant="secondary" size="sm" asChild>
+                  <Link href="/list">List</Link>
+                </Button>
               </div>
+              </div>
+
+              <ModeToggle/>
             </div>
           </div>
 
@@ -49,6 +61,7 @@ export default function RootLayout({
             </div>
           </ScrollArea>
         </div>
+        </ThemeProvider>
       </body>
     </html>
   );

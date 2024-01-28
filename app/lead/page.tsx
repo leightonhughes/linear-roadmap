@@ -53,12 +53,12 @@ export default async function getMyProjects() {
           (
             lead, // Use the custom lead order for rendering
           ) => (
-            <div key={lead} className="flex flex-col gap-2">
-              <h2 className="text-md font-semibold capitalize text-slate-700">
+            <div key={lead} className="flex flex-col gap-4">
+              <h2 className="text-xl font-semibold capitalize text-slate-700 dark:text-slate-200">
                 {lead}
               </h2>
 
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-2.5">
                 {projectsByLead[lead] &&
                   projectsByLead[lead]
                     .sort(
