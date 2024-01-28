@@ -31,7 +31,7 @@ export default function RootLayout({
 
               <div className="flex gap-2">
                 <Button variant="secondary" size="sm" asChild>
-                  <Link href="/">List</Link>
+                  <Link href="/">Timeline</Link>
                 </Button>
                 <Button variant="secondary" size="sm" asChild>
                   <Link href="/status">Status</Link>
