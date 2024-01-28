@@ -45,15 +45,15 @@ export default async function getMyProjects() {
   const stateDetails = {
     planned: {
       title: "Next planned",
-      description: "These are the features that are planned for the next few months. They are ordered by start date."
+      description: "These are ordered by start date."
     },
     started: {
       title: "Started",
-      description: "We have started working on these features."
+      description: "We have started working on these projects."
     },
     completed: {
       title: "Completed",
-      description: "This is the completed state description."
+      description: ""
     }
   };
   
@@ -62,7 +62,7 @@ export default async function getMyProjects() {
       <div className="grid gap-8 lg:grid-cols-3">
         {customStateOrder.map((state) => (
           <div key={state} className="flex flex-col gap-4">
-            <div className="flex flex-col gap-2 lg:h-20">
+            <div className="flex flex-col gap-2 lg:h-16">
               <h2 className="text-xl font-semibold capitalize text-slate-700 dark:text-slate-200">
                 {stateDetails[state].title}
               </h2>
