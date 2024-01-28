@@ -67,7 +67,7 @@ export default async function getMyProjects() {
                 {stateDetails[state].title}
               </h2>
 
-              <p className="text-sm text-slate-700 dark:text-slate-400">{stateDetails[state].description}</p>
+              <p className="text-xs text-slate-700 dark:text-slate-400">{stateDetails[state].description}</p>
             </div>
 
             <div className="flex flex-col gap-2.5">
@@ -86,13 +86,15 @@ export default async function getMyProjects() {
                         targetDate={project.targetDate}
                         name={project.name}
                         lead={project.lead}
+                        description={project.description}
+                        icon={project.icon}
                       />
                     </DrawerTrigger>
                     <DrawerContent className="dark:bg-white">
                       <DrawerHeader className="gap-8 text-left">
-                        <DrawerTitle>{project.name}</DrawerTitle>
                         <DrawerDescription>
                           <CardInfo
+                            project={project}
                             state={project.state}
                             startDate={project.startDate}
                             targetDate={project.targetDate}

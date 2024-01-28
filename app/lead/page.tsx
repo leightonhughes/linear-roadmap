@@ -48,7 +48,7 @@ export default async function getMyProjects() {
 
   return (
     <>
-      <div className="grid gap-8 lg:grid-cols-4">
+      <div className="grid gap-8 lg:grid-cols-3">
         {sortedLeads.map(
           (
             lead, // Use the custom lead order for rendering
@@ -78,6 +78,8 @@ export default async function getMyProjects() {
                               targetDate={project.targetDate}
                               name={project.name}
                               lead={project.lead}
+                              description={project.description}
+                              icon={project.icon}
                             />
                           </DrawerTrigger>
                           <DrawerContent className="dark:bg-white">
@@ -85,6 +87,7 @@ export default async function getMyProjects() {
                               <DrawerTitle>{project.name}</DrawerTitle>
                               <DrawerDescription>
                               <CardInfo
+                                project={project}
                                 state={project.state}
                                 startDate={project.startDate}
                                 targetDate={project.targetDate}

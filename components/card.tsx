@@ -1,7 +1,7 @@
 import Image from "next/image";
 import RoadMapDate from "./date";
 
-async function Card({ state, startDate, targetDate, name, lead }) {
+async function Card({ state, startDate, targetDate, name, lead, description, icon }) {
   return (
     <>
       <div className="flex flex-col gap-4 overflow-hidden rounded-xl bg-white dark:bg-slate-900 p-3 shadow ring-1 ring-slate-200 dark:ring-slate-800">
@@ -39,11 +39,35 @@ async function Card({ state, startDate, targetDate, name, lead }) {
                       </span>
                     </div>
                   )}
+
+                  {icon === "NorthAmerica" ? (
+                    <div className="flex flex-col gap-0 rounded-lg bg-red-600 dark:bg-transparent dark: px-2 py-0.5 capitalize  ring-1 ring-inset dark:ring-red-700 ring-red-700">
+                      <span className="text-2xs flex gap-1 font-semibold text-white">
+                        AI required
+                      </span>
+                    </div>
+                  ) : icon === "Australia" ? (
+                    <div className="flex flex-col gap-0 rounded-lg bg-red-600 dark:bg-transparent dark: px-2 py-0.5 capitalize  ring-1 ring-inset dark:ring-red-700 ring-red-700">
+                      <span className="text-2xs flex gap-1 font-semibold text-white">
+                        AU required
+                      </span>
+                    </div>
+                  ) : (
+                    ""
+                  )}
                 </div>
 
-                <h3 className="max-w-lg text-sm font-semibold tracking-tight text-slate-700 dark:text-slate-300">
-                  {name}
-                </h3>
+                <div className="flex flex-col gap-1">
+                  <h3 className="max-w-lg text-sm font-semibold tracking-tight text-slate-700 dark:text-slate-300">
+                    {name}
+                  </h3>
+
+                  {description && (
+                    <p className="text-xs text-slate-500 dark:text-slate-500">{description}</p>
+                  )}
+
+
+                </div>
               </div>
 
               {(await lead)?.avatarUrl ?? "" ? (

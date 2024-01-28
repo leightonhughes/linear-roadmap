@@ -50,12 +50,15 @@ export default async function getMyIssues() {
                 targetDate={project.targetDate}
                 name={project.name}
                 lead={project.lead}
+                description={project.description}
+                icon={project.icon}
               />
             </DrawerTrigger>
             <DrawerContent className="dark:bg-white">
               <DrawerHeader className="gap-8 text-left">
                 <DrawerDescription>
                   <CardInfo
+                    project={project}
                     state={project.state}
                     startDate={project.startDate}
                     targetDate={project.targetDate}

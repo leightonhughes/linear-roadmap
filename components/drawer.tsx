@@ -3,7 +3,7 @@ import RoadMapDate from "./date";
 import { ScrollArea } from "./ui/scroll-area";
 import MarkdownComponent from "./markdown";
 
-async function CardInfo({ state, startDate, targetDate, name, lead, description }) {
+async function CardInfo({ state, startDate, targetDate, name, lead, description, project }) {
   return (
     <>
       <div className="flex flex-col items-start gap-6">
@@ -71,12 +71,12 @@ async function CardInfo({ state, startDate, targetDate, name, lead, description 
           </div>
         )}
 
-        {/* {await (async () => {
+        {await (async () => {
           try {
             const updates = await project.projectUpdates();
             return (
               <>
-                {updates.nodes[0].body && (
+                {updates.nodes[0] && (
                   <div className="w-full">
                     <span className="text-xs text-slate-500">
                       Latest Update from{" "}
@@ -105,7 +105,7 @@ async function CardInfo({ state, startDate, targetDate, name, lead, description 
               </p>
             );
           }
-        })()} */}
+        })()}
       </div>
     </>
   );
