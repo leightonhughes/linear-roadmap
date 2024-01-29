@@ -15,6 +15,8 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { ModeToggle } from "@/components/mode-toggle";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 export default function RootLayout({
   children,
@@ -55,11 +57,13 @@ export default function RootLayout({
             </div>
           </div>
 
-          <ScrollArea>
-            <div className="container mx-auto mt-8 flex flex-col gap-2 pb-4">
-              {children}
-            </div>
-          </ScrollArea>
+          <Suspense fallback={<Loading/>}>
+            <ScrollArea>
+              <div className="container mx-auto mt-8 flex flex-col gap-2 pb-4">
+                {children}
+              </div>
+            </ScrollArea>
+          </Suspense>
         </div>
         </ThemeProvider>
       </body>

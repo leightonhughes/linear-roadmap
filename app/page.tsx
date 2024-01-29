@@ -1,12 +1,5 @@
 import { LinearClient } from "@linear/sdk";
 
-const linear = new LinearClient({
-  apiKey: process.env.LINEAR_API_KEY,
-});
-
-import Image from "next/image";
-import RoadMapDate from "@/components/date";
-import MarkdownComponent from "@/components/markdown";
 import {
   Drawer,
   DrawerClose,
@@ -18,12 +11,14 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { Button } from "@/components/ui/button";
-import { ScrollArea } from "@/components/ui/scroll-area";
-
 import Card from "@/components/card";
 import CardInfo from "@/components/drawer";
 
-export default async function getMyProjects() {
+const linear = new LinearClient({
+  apiKey: process.env.LINEAR_API_KEY,
+});
+
+export default async function GetMyProjects() {
   const projects = await linear.projects();
 
   // Grouping projects by state
