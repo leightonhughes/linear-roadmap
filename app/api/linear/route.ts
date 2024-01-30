@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { LinearClient } from '@linear/sdk';
 
-export default async function linearWebhookHandler(
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
