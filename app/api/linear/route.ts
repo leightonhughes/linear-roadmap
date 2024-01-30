@@ -1,20 +1,12 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-import { LinearClient } from '@linear/sdk';
-
-export default async function handler(
+import type { NextApiRequest, NextApiResponse } from 'next'
+ 
+type ResponseData = {
+  message: string
+}
+ 
+export default function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse<ResponseData>
 ) {
-  // Initialize the Linear client
-  const linearClient = new LinearClient({ apiKey: process.env.LINEAR_API_KEY });
-
-  try {
-    // Fetch the updated data from Linear
-    const updatedProjects = await linearClient.projects();
-    
-    // Trigger a re-render by sending the updated data to the client
-    res.status(200).json({ issue: updatedProjects });
-  } catch (error) {
-    res.status(500).json({ error: 'An error occurred while fetching the updated data' });
-  }
+  res.status(200).json({ message: 'Hello from Next.js!' })
 }
