@@ -47,7 +47,7 @@ async function Card({ state, startDate, targetDate, name, lead, description, ico
                   )}
 
                   {icon === "NorthAmerica" ? (
-                    <div className="flex flex-col gap-0 bg-red-100 rounded-lg dark:bg-transparent dark: px-2 py-1.5 capitalize  ring-1 ring-inset dark:ring-red-800 ring-red-200 leading-tight">
+                    <div className="flex flex-col gap-0 bg-red-100 rounded-lg dark:bg-transparent dark: px-2 py-1 capitalize  ring-1 ring-inset dark:ring-red-800 ring-red-200 leading-tight">
                       <span className="text-2xs flex gap-1 font-semibold text-slate-70 leading-tight">
                         <span className="text-2xs flex gap-1 font-semibold text-[#e42312] dark:text-white">
                           AI
@@ -55,7 +55,7 @@ async function Card({ state, startDate, targetDate, name, lead, description, ico
                       </span>
                     </div>
                   ) : icon === "Australia" ? (
-                    <div className="flex flex-col gap-0 bg-red-100 rounded-lg  dark:bg-transparent dark: px-2 py-1.5 capitalize  ring-1 ring-inset dark:ring-red-800 ring-red-200 leading-tight">
+                    <div className="flex flex-col gap-0 bg-red-100 rounded-lg  dark:bg-transparent dark: px-2 py-1 capitalize  ring-1 ring-inset dark:ring-red-800 ring-red-200 leading-tight">
                       <span className="text-2xs flex gap-1 font-semibold text-slate-70 leading-tight">
                         <span className="text-2xs flex gap-1 font-semibold text-[#e42312] dark:text-white">
                           AU
