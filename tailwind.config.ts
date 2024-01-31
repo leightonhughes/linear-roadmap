@@ -20,7 +20,7 @@ const config = {
     extend: {
       fontSize: {
         '3xs': '.63rem',
-        '2xs': '.6875rem',
+        '2xs': '.63rem',
       },
       colors: {
         border: "hsl(var(--border))",

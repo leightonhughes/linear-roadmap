@@ -37,16 +37,20 @@ export default async function GetMyProjects() {
 
   // Sorting the states
 
-  const customStateOrder = ["planned", "started", "completed"];
+  const customStateOrder = ["backlog", "planned", "started", "completed"];
 
   const stateDetails = {
+    backlog: {
+      title: "Triage",
+      description: "These are not currently part of our roadmap."
+    },
     planned: {
       title: "Next planned",
       description: "These are ordered by start date."
     },
     started: {
       title: "Started",
-      description: "We have started working on these projects."
+      description: ""
     },
     completed: {
       title: "Completed",
@@ -56,7 +60,7 @@ export default async function GetMyProjects() {
   
   return (
     <>
-      <div className="grid gap-8 lg:grid-cols-3">
+      <div className="grid gap-8 lg:grid-cols-4">
         {customStateOrder.map((state) => (
           <div key={state} className="flex flex-col gap-4">
             <div className="flex flex-col gap-2 lg:h-16">

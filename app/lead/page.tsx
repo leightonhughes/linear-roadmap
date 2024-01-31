@@ -48,7 +48,7 @@ export default async function getMyProjects() {
 
   return (
     <>
-      <div className="grid gap-8 lg:grid-cols-3">
+      <div className="grid gap-8 lg:grid-cols-4">
         {sortedLeads.map(
           (
             lead, // Use the custom lead order for rendering
