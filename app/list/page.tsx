@@ -1,3 +1,5 @@
+export const revalidate = 0
+
 import { LinearClient, Project, ProjectConnection } from "@linear/sdk";
 
 const linear = new LinearClient({
