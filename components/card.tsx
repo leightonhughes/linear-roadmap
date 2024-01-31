@@ -32,7 +32,7 @@ async function Card({ state, startDate, targetDate, name, lead, description, ico
                         <span className="font-medium text-slate-400 dark:text-slate-400">
                           Start
                         </span>
-                        <RoadMapDate startDate={startDate} />
+                        <span className="text-slate-700 dark:text-white"><RoadMapDate startDate={startDate} /></span>
                       </span>
                     </div>
                   )}
