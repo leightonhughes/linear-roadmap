@@ -70,7 +70,7 @@ async function Card({project, state, startDate, targetDate, name, lead, descript
 
             <div className="flex -space-x-1">
               {(await lead)?.avatarUrl ?? "" ? (
-                <div className="z-40 flex shrink-0 flex-col gap-0 capitalize">
+                <div className="z-40 ring-2 ring-white flex rounded-full shrink-0 flex-col gap-0 capitalize">
                   <div className="flex items-center gap-2">
                     <Image
                       src={(await lead)?.avatarUrl ?? ""}
@@ -84,7 +84,7 @@ async function Card({project, state, startDate, targetDate, name, lead, descript
               ) : (
                 <>
                 {icon === "NorthAmerica" ? (
-                  <div className="z-40 flex items-center justify-center bg-[#e42312] rounded-full w-6 h-6 shrink-0">
+                  <div className="z-40 ring-2 ring-white flex items-center justify-center bg-[#e42312] rounded-full w-6 h-6 shrink-0">
                     <svg
                       viewBox="0 0 232 211"
                       fill="none"
@@ -109,7 +109,7 @@ async function Card({project, state, startDate, targetDate, name, lead, descript
                     </svg>
                   </div>
                 ) : icon === "Australia" ? (
-                  <div className="z-40 flex items-center justify-center bg-[#e42312] rounded-full w-6 h-6 shrink-0">
+                  <div className="z-40 flex ring-2 ring-white items-center justify-center bg-[#e42312] rounded-full w-6 h-6 shrink-0">
 <svg
                       viewBox="0 0 232 211"
                       fill="none"
@@ -144,21 +144,25 @@ async function Card({project, state, startDate, targetDate, name, lead, descript
                   const updates = await project.members();
                   return (
                     <>
-                      {updates.nodes.map(async (member, index) => (
-                        <div key={member} className="flex shrink-0" style={{ position: 'relative', zIndex: updates.nodes.length - index }}>
-                          {member.name != (await lead)?.name && (
-                            <div className="flex items-center gap-2">
-                              <Image
-                                src={member.avatarUrl ?? ""}
-                                width={24}
-                                height={24}
-                                className="rounded-full  shadow-sm"
-                                alt="Avatar"
-                              />
+                      {updates.nodes.map(async (member, index) => {
+                        if (member.name !== (await lead)?.name) {
+                          return (
+                            <div key={member}>
+                              <div className="flex shrink-0 ring-2 ring-white rounded-full" style={{ position: 'relative', zIndex: updates.nodes.length - index }}>
+                                <div className="flex items-center gap-2">
+                                  <Image
+                                    src={member.avatarUrl ?? ""}
+                                    width={24}
+                                    height={24}
+                                    className="rounded-full  shadow-sm"
+                                    alt="Avatar"
+                                  />
+                                </div>
+                              </div>
                             </div>
-                          )}
-                        </div>
-                      ))}
+                          );
+                        }
+                      })}
                     </>
                   );
                 } catch (error) {
