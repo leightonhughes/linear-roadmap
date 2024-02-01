@@ -1,5 +1,3 @@
-export const revalidate = 30
-
 import { LinearClient } from "@linear/sdk";
 
 import {

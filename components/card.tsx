@@ -4,7 +4,7 @@ import RoadMapDate from "./date";
 async function Card({project, state, startDate, targetDate, name, lead, description, icon }) {
   return (
     <>
-      <div className="flex flex-col gap-4 overflow-hidden rounded-xl bg-white dark:bg-slate-900 p-3 shadow ring-1 ring-slate-200 dark:ring-slate-800">
+      <div className="relative flex flex-col gap-4 bg-white  rounded-xl  dark:bg-slate-900 p-3 shadow ring-1 ring-slate-200 dark:ring-slate-800">
         <div className="flex items-start">
           <div className="flex w-full flex-col gap-2">
             <div className="flex items-start justify-between gap-8">
