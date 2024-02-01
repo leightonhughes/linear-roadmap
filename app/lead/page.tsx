@@ -73,6 +73,7 @@ export default async function getMyProjects() {
                         <Drawer key={project.id}>
                           <DrawerTrigger className="text-left">
                             <Card
+                              project={project}
                               state={project.state}
                               startDate={project.startDate}
                               targetDate={project.targetDate}

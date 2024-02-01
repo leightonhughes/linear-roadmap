@@ -1,7 +1,7 @@
 import Image from "next/image";
 import RoadMapDate from "./date";
 
-async function Card({ state, startDate, targetDate, name, lead, description, icon }) {
+async function Card({project, state, startDate, targetDate, name, lead, description, icon }) {
   return (
     <>
       <div className="flex flex-col gap-4 overflow-hidden rounded-xl bg-white dark:bg-slate-900 p-3 shadow ring-1 ring-slate-200 dark:ring-slate-800">
@@ -68,8 +68,9 @@ async function Card({ state, startDate, targetDate, name, lead, description, ico
                 </div>
               </div>
 
+            <div className="flex -space-x-1">
               {(await lead)?.avatarUrl ?? "" ? (
-                <div className="flex shrink-0 flex-col gap-0 capitalize">
+                <div className="z-40 flex shrink-0 flex-col gap-0 capitalize">
                   <div className="flex items-center gap-2">
                     <Image
                       src={(await lead)?.avatarUrl ?? ""}
@@ -83,7 +84,7 @@ async function Card({ state, startDate, targetDate, name, lead, description, ico
               ) : (
                 <>
                 {icon === "NorthAmerica" ? (
-                  <div className="flex items-center justify-center bg-[#e42312] rounded-full w-6 h-6 shrink-0">
+                  <div className="z-40 flex items-center justify-center bg-[#e42312] rounded-full w-6 h-6 shrink-0">
                     <svg
                       viewBox="0 0 232 211"
                       fill="none"
@@ -108,7 +109,7 @@ async function Card({ state, startDate, targetDate, name, lead, description, ico
                     </svg>
                   </div>
                 ) : icon === "Australia" ? (
-                  <div className="flex items-center justify-center bg-[#e42312] rounded-full w-6 h-6 shrink-0">
+                  <div className="z-40 flex items-center justify-center bg-[#e42312] rounded-full w-6 h-6 shrink-0">
 <svg
                       viewBox="0 0 232 211"
                       fill="none"
@@ -137,6 +138,42 @@ async function Card({ state, startDate, targetDate, name, lead, description, ico
                 )}
                 </>
               )}
+
+              {await (async () => {
+                try {
+                  const updates = await project.members();
+                  return (
+                    <>
+                      {updates.nodes.map(async (member, index) => (
+                        <div key={member} className="flex shrink-0" style={{ position: 'relative', zIndex: updates.nodes.length - index }}>
+                          {member.name != (await lead)?.name && (
+                            <div className="flex items-center gap-2">
+                              <Image
+                                src={member.avatarUrl ?? ""}
+                                width={24}
+                                height={24}
+                                className="rounded-full  shadow-sm"
+                                alt="Avatar"
+                              />
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </>
+                  );
+                } catch (error) {
+                  console.error(
+                    "Error fetching project updates: ",
+                    error,
+                  );
+                  return (
+                    <p className="text-xs text-slate-500">
+                      No Updates yet
+                    </p>
+                  );
+                }
+              })()}
+              </div>
             </div>
 
             <div className="flex flex-col gap-1">
