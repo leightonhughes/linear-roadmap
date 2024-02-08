@@ -37,7 +37,7 @@ export default function RootLayout({
             <div className="container flex justify-between">
               <div className="flex flex-col gap-2">
               <h1 className="text-lg font-semibold text-slate-700 dark:text-slate-400">
-                <Link href="/">Roadmap</Link>
+                <Link href="/">{process.env.ROADMAP}</Link>
               </h1>
 
               <div className="flex gap-2">
