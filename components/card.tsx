@@ -185,9 +185,32 @@ async function Card({project, state, startDate, targetDate, name, lead, descript
                 {name}
               </h3>
 
-              {description && (
+              {await (async () => {
+                try {
+                  const updates = await project.projectUpdates();
+                  return (
+                    <>
+                      {updates.nodes[0] && (
+                       <p className="text-xs text-slate-500 dark:text-slate-500">
+                          {updates.nodes[0].body}
+                        </p>
+                      )}
+                    </>
+                  );
+                } catch (error) {
+                  console.error(
+                    "Error fetching project updates: ",
+                    error,
+                  );
+                  return (
+                    ""
+                  );
+                }
+              })()}
+
+              {/* {description && (
                 <p className="text-xs text-slate-500 dark:text-slate-500">{description}</p>
-              )}
+              )} */}
             </div>
           </div>
         </div>
