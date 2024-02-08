@@ -171,9 +171,7 @@ async function Card({project, state, startDate, targetDate, name, lead, descript
                     error,
                   );
                   return (
-                    <p className="text-xs text-slate-500">
-                      No Updates yet
-                    </p>
+                ""
                   );
                 }
               })()}
